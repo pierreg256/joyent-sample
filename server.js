@@ -4,7 +4,8 @@ PORT = 8001;
 // when the daemon started
 var starttime = (new Date()).getTime();
 
-var fu = require("./fu"),
+var path = require("path"),
+    fu = require(path.dirname(__filename)+"/fu"),
     sys = require("sys"),
     url = require("url"),
     qs = require("querystring");
