@@ -1,5 +1,5 @@
-HOST = '127.0.0.1'; // localhost
-PORT = 8001;
+HOST = 'pierreg256.no.de'; // localhost
+PORT = 80;
 
 // when the daemon started
 var starttime = (new Date()).getTime();
