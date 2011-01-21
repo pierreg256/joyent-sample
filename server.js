@@ -5,7 +5,7 @@ PORT = 8001;
 var starttime = (new Date()).getTime();
 
 var path = require("path"),
-    fu = require(path.dirname(__filename)+"/fu.js"),
+    fu = require(path.dirname(__filename)+"/fu"),
     sys = require("sys"),
     url = require("url"),
     qs = require("querystring");
