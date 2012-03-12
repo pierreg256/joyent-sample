@@ -1,0 +1,13 @@
+<% if (!everyauth.loggedIn) { %>
+  <h1> Non identifié... </H1>
+<p>Vous allez être redirigés vers la page d'identification. Si vous n'êtes pas redirigés automatiquement vous pouvez cliquer <a href="/login">ICI</a></p>
+<script type="text/javascript">document.location.href="/login"</script>
+<%} else {%>
+  <div id="cornerCallout">Demo!</div>
+	<div id="header"><%= title %></div>
+	
+  <p>EveryAuth : <%= JSON.stringify(everyauth) %><p>
+  <p>Logged in : <%= everyauth.loggedIn %></p>
+  <p>User : <%= everyauth.user %></p>
+  
+<%} %>

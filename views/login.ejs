@@ -1,0 +1,47 @@
+
+	<div id="cornerCallout">Demo!</div>
+	<div id="header"><%= title %></div>
+	<div id="loginContainer">
+		<div id="loginHeader">Identifiez vous</div> 
+		<div id="loginTagline">Social est une démo d'utilisation de node.js. <br>Si vous n'avez pas d'identifiant, vous pouvez vous enregistrer <a href="/register">ICI.</a></div>
+		<% if ('undefined' !== typeof errors && errors.length) { %>
+    <p>Attention! Vous n'avez pas pu vous identifier pour les raisons suivantes :</p>
+    <UL>
+    <% for (i=0; i<errors.length; i++) { %>
+      <LI><%=errors[i]%></LI>
+    <% }%>
+    </UL>
+    <div align=center><button class="button" onclick="javascript:document.location.href='/login';">Recommencer</Button></div>
+    <% } else { %>
+    
+		<div id="loginContent">
+		<form action="/login" method="post">
+		<ul class="form">
+			<li>
+			<div class="text-field-view">
+				<div class="input">
+  					<input class="test" name="<%=everyauth.password.loginFormFieldName%>" type="text" title="Votre Adresse email" placeholder="Votre Adresse email">
+				</div>
+			</div>
+			</li>
+			<li>
+			<div class="text-field-view">
+				<div class="input">
+  					<input class="test" name="<%=everyauth.password.passwordFormFieldName%>" type="password" title="Votre Mot De Passe" placeholder="Votre Mot De Passe">
+				</div>
+			</div>
+			</li>
+		
+		</ul>
+		<div align=center><button class="button" type="submit">Valider</button></div>
+		</form>
+		</div>
+		<% } %>
+	</div>
+	
+	
+	<script type="text/javascript">
+	$('.test').addPlaceholder();
+	</script>
+
+
