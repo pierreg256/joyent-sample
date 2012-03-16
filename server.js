@@ -15,13 +15,13 @@ server.get('/api/users/:id', function (req, res, next){
     res.json(200,{
       "id": 127,
       "firstname": "pierre",
-      "surname": "gilot",
-      "email":"email@domain.com"
+      "lastname": "gilot",
+      "email":"email@domain.com",
+      "password":"mickey"
     });
   } else {
     res.json(404,{
-      error: 404,
-      message: "user not found"
+      error: {errno:404,  message: "user not found"}
     });
   }
 });
