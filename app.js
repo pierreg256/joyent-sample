@@ -5,6 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
+  , APIroutes = require('./lib/API')
   , eaHelp = require('./lib/eaHelper')
   , util = require('util');
   //, db = require('./lib/database');
@@ -36,6 +37,9 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', routes.index);
+
+// API Routes
+app.get('/api/users/:userid', APIroutes.APIUsers.get);
 
 
 //console.log(util.inspect(app));
