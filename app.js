@@ -39,8 +39,38 @@ app.configure('production', function(){
 app.get('/', routes.index);
 
 // API Routes
-app.get('/api/users/:userid', APIroutes.APIUsers.get);
+app.get('/api/users/:userid', APIroutes.APIUsers.authenticate, APIroutes.APIUsers.get);
+app.put('/api/users/:userid', APIroutes.APIUsers.authenticate, APIroutes.APIUsers.put);
+app.post('/api/users/:userid', APIroutes.APIUsers.post);
+app.get('/api/my/identity', APIroutes.APIUsers.authenticate, APIroutes.APIUsers.identity)
 
+app.post('/api/moves', APIroutes.APIUsers.authenticate, APIroutes.APIMoves.post);
+
+app.get('/api/moves', APIroutes.APIUsers.authenticate, APIroutes.APIMoves.get);
+app.get('/api/users/:userid/moves', APIroutes.APIUsers.authenticate, APIroutes.APIMoves.get);
+
+
+app.get(/\/.*/, APIroutes.APIUsers.authenticate, function (req, res, next){
+  console.log('GET: ' + req.url);
+  console.log('user_id: '+req.param('user_id','inconnu'));
+  console.log(JSON.stringify(req.body));
+  console.log(req.query);
+  console.log(req.params);
+  res.json([{}],501);
+});
+
+
+app.put(/\/.*/, function (req, res, next){
+  console.log('PUT: ' + req.url);
+  console.log(req.body);
+  res.json(501);
+});
+
+app.post(/\/.*/, function (req, res, next){
+  console.log('POST: ' + req.url);
+  console.log(req.body);
+  res.json(501);
+});
 
 //console.log(util.inspect(app));
 app.listen(3000);
