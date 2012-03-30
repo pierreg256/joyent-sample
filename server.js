@@ -50,15 +50,6 @@ app.get('/api/moves', APIroutes.APIUsers.authenticate, APIroutes.APIMoves.get);
 app.get('/api/users/:userid/moves', APIroutes.APIUsers.authenticate, APIroutes.APIMoves.get);
 
 
-app.get(/\/.*/, APIroutes.APIUsers.authenticate, function (req, res, next){
-  console.log('GET: ' + req.url);
-  console.log('user_id: '+req.param('user_id','inconnu'));
-  console.log(JSON.stringify(req.body));
-  console.log(req.query);
-  console.log(req.params);
-  res.json([{}],501);
-});
-
 
 app.put(/\/.*/, function (req, res, next){
   console.log('PUT: ' + req.url);
