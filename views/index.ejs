@@ -1,13 +1,106 @@
+<STYLE>
+#rounded-corner
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	width: 800px;
+	text-align: left;
+	border-collapse: collapse;
+	
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-o-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-khtml-border-radius: 8px;
+	border-radius: 8px;
+	
+	-moz-box-shadow: rgba(0, 0, 0, 0.11) 0 2px 6px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.11) 0 2px 6px;
+	-o-box-shadow: rgba(0, 0, 0, 0.11) 0 2px 6px;
+	box-shadow: rgba(0, 0, 0, 0.11) 0 2px 6px;
+	
+}
+#rounded-corner thead th.rounded-company
+{
+	background: #b9c9fe; // url('table-images/left.png') left -1px no-repeat;
+}
+#rounded-corner thead th.rounded-q4
+{
+	background: #b9c9fe; // url('table-images/right.png') right -1px no-repeat;
+}
+#rounded-corner th
+{
+	padding: 8px;
+	font-weight: normal;
+	font-size: 13px;
+	color: #039;
+	background: #b9c9fe;
+}
+#rounded-corner td
+{
+	padding: 8px;
+	background: #e8edff;
+	border-top: 1px solid #fff;
+	color: #669;
+}
+#rounded-corner tfoot td.rounded-foot-left
+{
+	background: #e8edff; // url('table-images/botleft.png') left bottom no-repeat;
+}
+#rounded-corner tfoot td.rounded-foot-right
+{
+	background: #e8edff; // url('table-images/botright.png') right bottom no-repeat;
+}
+#rounded-corner tbody tr:hover td
+{
+	background: #d0dafd;
+	cursor: pointer;
+}
+#rounded-corner .odd
+{
+	background: #dce4ff; 
+}
+
+</STYLE>
 <% if (!everyauth.loggedIn) { %>
   <h1> Non identifié... </H1>
 <p>Vous allez être redirigés vers la page d'identification. Si vous n'êtes pas redirigés automatiquement vous pouvez cliquer <a href="/login">ICI</a></p>
 <script type="text/javascript">document.location.href="/login"</script>
 <%} else {%>
-  <div id="cornerCallout">Demo!</div>
-	<div id="header"><%= title %></div>
+  <div id="cornerCallout">Demo</div>
+	<div id="header">Bienvenu sur la demo de <em>essaiLoc</em>!</div>
 	
+	
+	<P>Vous êtes connecté en tant que <%= everyauth.user.firstname %>&nbsp;<%= everyauth.user.lastname %></P>
+	<p>&nbsp;</p>
+	<H1>Liste des utilisateurs référencés:</H1>
+
+  <table id="rounded-corner" summary="Liste des Utilisateurs référencés">
+      <thead>
+      	<tr>
+          	<th scope="col" class="rounded-company">email</th>
+              <th scope="col" class="rounded-q1">Prénom</th>
+              <th scope="col" class="rounded-q2">Nom</th>
+              <th scope="col" class="rounded-q3">Mot De Passe</th>
+              <th scope="col" class="rounded-q4">Date de création</th>
+          </tr>
+      </thead>
+          <tfoot>
+      	<tr>
+          	<td colspan="4" class="rounded-foot-left"><em>Ces données sont données à titre indicatif et purement fictif.</em></td>
+          	<td class="rounded-foot-right">&nbsp;</td>
+          </tr>
+      </tfoot>
+      <tbody>
+      <%- partial('partials/usr', users) %>
+    	
+      </tbody>
+  </table>
+
+	<!--
   <p>EveryAuth : <%= JSON.stringify(everyauth) %><p>
   <p>Logged in : <%= everyauth.loggedIn %></p>
   <p>User : <%= everyauth.user %></p>
-  
+  -->
 <%} %>

@@ -1,0 +1,7 @@
+<tr <%= (indexInCollection % 2==1?"class=odd":"")%> onclick=<%='javascript:document.location.href="/users/'+usr.email+'/trips.html";'%>>
+<td <%= (indexInCollection % 2==1?"class=odd":"")%>><%= usr.email %></td>
+<td><%= usr.firstname %></td>
+<td <%= (indexInCollection % 2==1?"class=odd":"")%>><%= usr.lastname %></td>
+<td><%= usr.password %></td>
+<td><%= usr.created_at %></td>
+</tr>

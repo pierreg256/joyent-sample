@@ -1,0 +1,16 @@
+<% if (!everyauth.loggedIn) { %>
+  <h1> Non identifié... </H1>
+<p>Vous allez être redirigés vers la page d'identification. Si vous n'êtes pas redirigés automatiquement vous pouvez cliquer <a href="/login">ICI</a></p>
+<script type="text/javascript">document.location.href="/login"</script>
+<%} else {%>
+  <H1>Details pour l''utilisateur : <%= details.user.email %></H1>
+  <P>Nom : <EM><%= details.user.lastname %></EM></P>
+  <P>Prénom : <EM><%= details.user.firstname %></EM></P>
+  <P>email : <EM><%= details.user.email %></EM></P>
+  <P>Mot De Passe : <EM><%= details.user.password %></EM></P>
+  <P>Date de création : <EM><%= details.user.created_at %></EM></P>
+  <P>Date de modification : <EM><%= details.user.last_updated %></EM></P>
+  
+  <H2>Liste des Voyages pour cet utilisateur</H2>
+  <%- partial('partials/trip', details.trips) %>
+<% }%>

@@ -37,6 +37,7 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', routes.index);
+app.get('/users/:user_id/trips.html', routes.details);
 
 // API Routes
 app.get('/api/users/:userid', APIroutes.APIUsers.authenticate, APIroutes.APIUsers.get);
